@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "location",
         "cars"
 })
-public class Example {
+public class GarageDetails {
 
     @JsonProperty("_id")
     private Integer id;

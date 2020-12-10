@@ -1,6 +1,6 @@
 package com.cogizant.test.secondhandcar.util;
 
-import com.cogizant.test.secondhandcar.entity.Example;
+import com.cogizant.test.secondhandcar.entity.GarageDetails;
 import com.cogizant.test.secondhandcar.repo.CarRepo;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class ApplicationInitializer implements InitializingBean
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        Example[] examples =restTemplate.exchange(appConfig.getUrl(), HttpMethod.GET,entity,Example[].class).getBody();
-        util.saveInDB(examples);
+        GarageDetails[] garageDetails =restTemplate.exchange(appConfig.getUrl(), HttpMethod.GET,entity, GarageDetails[].class).getBody();
+        util.saveInDB(garageDetails);
     }
 }

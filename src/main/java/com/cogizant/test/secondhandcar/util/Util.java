@@ -1,7 +1,7 @@
 package com.cogizant.test.secondhandcar.util;
 
 import com.cogizant.test.secondhandcar.dao.CarModel;
-import com.cogizant.test.secondhandcar.entity.Example;
+import com.cogizant.test.secondhandcar.entity.GarageDetails;
 import com.cogizant.test.secondhandcar.entity.Vehicle;
 import com.cogizant.test.secondhandcar.repo.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +28,14 @@ public class Util {
         return new HttpEntity<String>("parameters", headers);
     }
 
-    public void saveInDB(Example[] examples)
+    public void saveInDB(GarageDetails[] garageDetails)
     {
-        List<CarModel> carModels = getCarModelsFromObj(examples);
+        List<CarModel> carModels = getCarModelsFromObj(garageDetails);
         carRepo.saveAll(carModels);
         System.out.print(carRepo.findAll().size());
     }
 
-    private List<CarModel> getCarModelsFromObj(Example[] vehicles) {
+    private List<CarModel> getCarModelsFromObj(GarageDetails[] vehicles) {
 
         List<CarModel> carModels = new ArrayList();
         Arrays.stream(vehicles).forEach(vehicle -> {
