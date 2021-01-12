@@ -18,9 +18,6 @@ import java.util.List;
 @Component
 public class Util {
 
-    @Autowired
-    CarRepo carRepo;
-
     public HttpEntity<String> getStringHttpEntity() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -28,18 +25,11 @@ public class Util {
         return new HttpEntity<String>("parameters", headers);
     }
 
-    public void saveInDB(GarageDetails[] garageDetails)
-    {
-        List<CarModel> carModels = getCarModelsFromObj(garageDetails);
-        carRepo.saveAll(carModels);
-        System.out.print(carRepo.findAll().size());
-    }
-
-    private List<CarModel> getCarModelsFromObj(GarageDetails[] vehicles) {
+    public List<CarModel> getCarModelsFromObj(GarageDetails[] vehicles) {
 
         List<CarModel> carModels = new ArrayList();
         Arrays.stream(vehicles).forEach(vehicle -> {
-            for (Vehicle v: vehicle.getCars().getVehicles()
+            for (Vehicle v : vehicle.getCars().getVehicles()
             ) {
                 CarModel carModel = new CarModel();
                 carModel.setId(v.getId());

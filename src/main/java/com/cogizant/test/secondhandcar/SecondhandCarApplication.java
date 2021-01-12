@@ -1,6 +1,5 @@
 package com.cogizant.test.secondhandcar;
 
-import com.cogizant.test.secondhandcar.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,20 +11,14 @@ import java.net.URISyntaxException;
 
 @SpringBootApplication
 public class SecondhandCarApplication {
-
-	Util util;
-
 	@Autowired
 	private RestTemplate restTemplate;
 
 	public static void main(String[] args) throws URISyntaxException {
 		SpringApplication.run(SecondhandCarApplication.class, args);
 	}
-
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-
-
 }

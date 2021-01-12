@@ -1,6 +1,5 @@
 package com.cogizant.test.secondhandcar.dao;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
